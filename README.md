@@ -15,6 +15,13 @@ With a focus on accessibility, Trainava is built for non-coders and developers a
 
 ---
 📁 Repository Structure
+Based on the uploaded files, here's how you can structure your **Trainava Web App GitHub repository** with complete setup, code structure, and usage instructions. This will help others understand, contribute to, or fork your project.
+
+---
+
+## 📁 Repository Structure
+
+```
 trainava-web-app/
 │
 ├── public/
@@ -53,8 +60,9 @@ trainava-web-app/
 ├── tailwind.config.js
 ├── vite.config.js
 └── README.md
+```
 
-
+---
 
 ## 🌐 Live Site
 
