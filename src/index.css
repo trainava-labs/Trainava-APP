@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%; /* Dark Slate Blue/Gray */
+    --foreground: 210 40% 98%; /* Almost White */
+    --card: 222.2 84% 6.9%; /* Slightly Lighter Dark Slate */
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 262.1 83.3% 57.8%; /* Vibrant Purple */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%; /* Muted Blue/Gray */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%; /* Lighter Gray */
+    --accent: 217.2 32.6% 27.5%; /* Slightly lighter muted blue/gray for hover */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72.2% 50.6%; /* Red */
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 22.5%; /* Darker border */
+    --input: 217.2 32.6% 22.5%;
+    --ring: 262.1 83.3% 57.8%; /* Primary color for focus rings */
+    --radius: 0.75rem; /* Slightly larger radius for softer corners */
+  }
+
+  .light {
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark Slate Blue/Gray */
+    --card: 0 0% 96%; /* Light Gray */
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 262.1 83.3% 57.8%; /* Vibrant Purple */
+    --primary-foreground: 210 40% 98%; /* Text on primary buttons can remain light */
+    --secondary: 220 14.3% 95.9%; /* Very Light Gray */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 13% 91%; /* Light gray for hover */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 72.2% 50.6%; /* Red */
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 13% 89%; /* Light Gray border */
+    --input: 220 13% 89%;
+    --ring: 262.1 83.3% 57.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-card/60 backdrop-blur-lg border border-card/20;
+  }
+
+  .page-title {
+    @apply text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-400 to-pink-500;
+  }
+  
+  .card-title-responsive {
+    @apply font-semibold leading-none tracking-tight text-lg sm:text-xl md:text-2xl;
+  }
+
+  .card-description-responsive {
+     @apply text-xs sm:text-sm text-muted-foreground;
+  }
+
+  .btn-enhanced {
+    @apply transform transition-transform duration-150 ease-out;
+  }
+  .btn-enhanced:hover {
+    @apply scale-[1.03]; /* Subtle scale on hover */
+  }
+  .btn-enhanced:active {
+    @apply scale-[0.97]; /* Subtle shrink on click */
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted) / 0.5);
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.5);
+    border-radius: 10px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary) / 0.6);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary) / 0.8);
+  }
+}
+
+/* Ensure body takes full height for gradient */
+body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  flex: 1;
+}
+
+/* Gradient background for dark theme */
+.dark body {
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(262.1,70%,15%) 50%, hsl(222.2,70%,10%) 100%);
+}
+
+/* Solid or simpler gradient for light theme */
+.light body {
+  background-color: hsl(var(--background));
+  /* Optional: background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(220,20%,95%) 100%); */
+}
